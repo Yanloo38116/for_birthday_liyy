@@ -1290,3 +1290,377 @@ if(finalPage){
 
 
 }
+/* =====================================
+   生日日期检测
+===================================== */
+
+
+function checkBirthday(){
+
+
+    const now =
+    new Date();
+
+
+
+    const year =
+    now.getFullYear();
+
+
+
+    const birthday =
+    new Date(
+        year,
+        6,
+        19,
+        0,
+        0,
+        0
+    );
+
+
+
+    const birthdayText =
+    document.querySelector(
+        ".birthday"
+    );
+
+
+
+    if(!birthdayText)
+
+        return;
+
+
+
+
+    // 今天生日
+
+
+    if(
+        now.getMonth()===6
+        &&
+        now.getDate()===19
+    ){
+
+
+        birthdayText.innerHTML =
+        "🎂 今天就是你的生日！";
+
+
+
+        return;
+
+
+    }
+
+
+
+
+    // 倒计时
+
+
+    let target;
+
+
+
+    if(
+        now > birthday
+    ){
+
+
+        target =
+        new Date(
+            year+1,
+            6,
+            19
+        );
+
+
+    }
+
+    else{
+
+
+        target=birthday;
+
+
+    }
+
+
+
+
+    const diff =
+    target-now;
+
+
+
+    const days =
+    Math.floor(
+        diff/
+        (1000*60*60*24)
+    );
+
+
+
+    birthdayText.innerHTML =
+
+    `距离生日还有 ${days} 天 ❤️`;
+
+
+
+}
+
+
+
+checkBirthday();
+
+
+
+
+
+
+
+/* =====================================
+   隐藏彩蛋
+===================================== */
+
+
+const finalTitle =
+document.querySelector(
+    ".finalTitle"
+);
+
+
+
+if(finalTitle){
+
+
+    let count=0;
+
+
+
+    finalTitle.addEventListener(
+        "click",
+        ()=>{
+
+
+            count++;
+
+
+
+            if(
+                count>=5
+            ){
+
+
+                const secret =
+                document.getElementById(
+                    "secret"
+                );
+
+
+
+                if(secret){
+
+
+                    secret.style.display =
+                    "block";
+
+
+                }
+
+
+
+                count=0;
+
+
+            }
+
+
+
+        }
+    );
+
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   点击关闭彩蛋
+===================================== */
+
+
+const secret =
+document.getElementById(
+    "secret"
+);
+
+
+
+if(secret){
+
+
+    secret.addEventListener(
+        "click",
+        ()=>{
+
+
+            secret.style.display =
+            "none";
+
+
+
+        }
+    );
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   NFC手机优化
+===================================== */
+
+
+document.addEventListener(
+    "touchstart",
+    function(){
+
+
+        document.body
+        .classList.add(
+            "mobile"
+        );
+
+
+    },
+
+    {
+        once:true
+    }
+
+);
+
+
+
+
+
+
+/* =====================================
+   页面进入欢迎效果
+===================================== */
+
+
+window.addEventListener(
+    "load",
+    ()=>{
+
+
+        document.body
+        .classList.add(
+            "loaded"
+        );
+
+
+
+    }
+);
+
+
+
+
+
+
+
+/* =====================================
+   防止双击放大
+===================================== */
+
+
+let lastTouchEnd=0;
+
+
+
+document.addEventListener(
+    "touchend",
+    function(event){
+
+
+        const now =
+        Date.now();
+
+
+
+        if(
+            now-lastTouchEnd
+            <=300
+        ){
+
+
+            event.preventDefault();
+
+
+        }
+
+
+
+        lastTouchEnd=now;
+
+
+
+    },
+
+    false
+
+);
+
+
+
+
+
+
+
+/* =====================================
+   页面隐藏提示
+===================================== */
+
+
+document.addEventListener(
+    "visibilitychange",
+    ()=>{
+
+
+        if(
+            document.hidden
+        ){
+
+
+            document.title =
+            "回来继续看生日礼物 ❤️";
+
+
+        }
+
+        else{
+
+
+            document.title =
+            "Happy Birthday XX ❤️";
+
+
+        }
+
+
+    }
+);
