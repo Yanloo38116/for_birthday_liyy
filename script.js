@@ -40,13 +40,29 @@ if(startBtn){
         ()=>{
 
 
-            document
-            .getElementById("letter")
-            .scrollIntoView({
+            const letter =
+            document.getElementById(
+                "letter"
+            );
 
-                behavior:"smooth"
 
-            });
+            letter.classList.add(
+                "unlock"
+            );
+
+
+            setTimeout(()=>{
+
+
+                letter.scrollIntoView({
+
+                    behavior:"smooth"
+
+                });
+
+
+            },100);
+
 
 
 
@@ -840,88 +856,63 @@ document.head.appendChild(
     heartStyle
 );
 /* =====================================
-   礼物盒打开（修正版）
+   礼物盒打开
 ===================================== */
 
 
-window.addEventListener(
-"load",
-()=>{
-
-
-    const gift =
-    document.querySelector(
-        "#gift"
-    );
-
-
-    const openGift =
-    document.querySelector(
-        "#openGift"
-    );
+const gift =
+document.getElementById(
+    "gift"
+);
 
 
 
-    console.log(
-        "gift:",
-        gift
-    );
-
-
-    console.log(
-        "button:",
-        openGift
-    );
+const openGift =
+document.getElementById(
+    "openGift"
+);
 
 
 
-    if(
-        openGift &&
-        gift
-    ){
+if(openGift){
+
+
+    openGift.addEventListener(
+        "click",
+        ()=>{
+
+
+            // 礼物动画
+
+            if(gift){
+
+
+                gift.classList.add(
+                    "open"
+                );
+
+
+            }
 
 
 
-        openGift.onclick =
-        function(){
-
-
-
-            console.log(
-                "打开礼物按钮被点击"
-            );
-
-
-
-            gift.classList.add(
-                "open"
-            );
-
+            // 延迟进入最终页面
 
 
             setTimeout(
                 ()=>{
 
 
-                    const final =
-                    document.querySelector(
-                        "#finalPage"
-                    );
+                    document
+                    .getElementById(
+                        "finalPage"
+                    )
+                    .scrollIntoView({
 
+                        behavior:
+                        "smooth"
 
-                    if(final){
-
-
-                        final.scrollIntoView({
-
-                            behavior:
-                            "smooth"
-
-
-                        });
-
-
-                    }
+                    });
 
 
 
@@ -937,15 +928,12 @@ window.addEventListener(
 
 
 
-        };
+        }
+    );
 
 
 
-    }
-
-
-
-});
+}
 
 
 /* =====================================
