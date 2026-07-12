@@ -2019,17 +2019,3 @@ img {
 
 
 }
-/* 锁定页面 */
-
-.locked {
-
-    display:none;
-
-}
-
-
-.locked.unlock {
-
-    display:flex;
-
-}
