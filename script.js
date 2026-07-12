@@ -40,29 +40,13 @@ if(startBtn){
         ()=>{
 
 
-            const letter =
-            document.getElementById(
-                "letter"
-            );
+            document
+            .getElementById("letter")
+            .scrollIntoView({
 
+                behavior:"smooth"
 
-            letter.classList.add(
-                "unlock"
-            );
-
-
-            setTimeout(()=>{
-
-
-                letter.scrollIntoView({
-
-                    behavior:"smooth"
-
-                });
-
-
-            },100);
-
+            });
 
 
 
@@ -856,63 +840,88 @@ document.head.appendChild(
     heartStyle
 );
 /* =====================================
-   礼物盒打开
+   礼物盒打开（修正版）
 ===================================== */
 
 
-const gift =
-document.getElementById(
-    "gift"
-);
+window.addEventListener(
+"load",
+()=>{
+
+
+    const gift =
+    document.querySelector(
+        "#gift"
+    );
+
+
+    const openGift =
+    document.querySelector(
+        "#openGift"
+    );
 
 
 
-const openGift =
-document.getElementById(
-    "openGift"
-);
+    console.log(
+        "gift:",
+        gift
+    );
+
+
+    console.log(
+        "button:",
+        openGift
+    );
 
 
 
-if(openGift){
-
-
-    openGift.addEventListener(
-        "click",
-        ()=>{
-
-
-            // 礼物动画
-
-            if(gift){
-
-
-                gift.classList.add(
-                    "open"
-                );
-
-
-            }
+    if(
+        openGift &&
+        gift
+    ){
 
 
 
-            // 延迟进入最终页面
+        openGift.onclick =
+        function(){
+
+
+
+            console.log(
+                "打开礼物按钮被点击"
+            );
+
+
+
+            gift.classList.add(
+                "open"
+            );
+
 
 
             setTimeout(
                 ()=>{
 
 
-                    document
-                    .getElementById(
-                        "finalPage"
-                    )
-                    .scrollIntoView({
+                    const final =
+                    document.querySelector(
+                        "#finalPage"
+                    );
 
-                        behavior:
-                        "smooth"
 
-                    });
+                    if(final){
+
+
+                        final.scrollIntoView({
+
+                            behavior:
+                            "smooth"
+
+
+                        });
+
+
+                    }
 
 
 
@@ -928,12 +937,15 @@ if(openGift){
 
 
 
-        }
-    );
+        };
 
 
 
-}
+    }
+
+
+
+});
 
 
 /* =====================================
