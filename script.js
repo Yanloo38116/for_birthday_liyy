@@ -839,3 +839,432 @@ heartStyle.innerHTML = `
 document.head.appendChild(
     heartStyle
 );
+/* =====================================
+   礼物盒打开
+===================================== */
+
+
+const gift =
+document.getElementById(
+    "gift"
+);
+
+
+
+const openGift =
+document.getElementById(
+    "openGift"
+);
+
+
+
+if(openGift){
+
+
+    openGift.addEventListener(
+        "click",
+        ()=>{
+
+
+            // 礼物动画
+
+            if(gift){
+
+
+                gift.classList.add(
+                    "open"
+                );
+
+
+            }
+
+
+
+            // 延迟进入最终页面
+
+
+            setTimeout(
+                ()=>{
+
+
+                    document
+                    .getElementById(
+                        "finalPage"
+                    )
+                    .scrollIntoView({
+
+                        behavior:
+                        "smooth"
+
+                    });
+
+
+
+                    startFirework();
+
+
+
+                },
+
+                1000
+
+            );
+
+
+
+        }
+    );
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   烟花 Canvas
+===================================== */
+
+
+function startFirework(){
+
+
+
+    const area =
+    document.getElementById(
+        "fireworkArea"
+    );
+
+
+
+    if(!area)
+
+        return;
+
+
+
+    const canvas =
+    document.createElement(
+        "canvas"
+    );
+
+
+
+    area.appendChild(
+        canvas
+    );
+
+
+
+    canvas.width =
+        area.clientWidth;
+
+
+
+    canvas.height =
+        area.clientHeight;
+
+
+
+
+    const ctx =
+    canvas.getContext(
+        "2d"
+    );
+
+
+
+
+    let particles=[];
+
+
+
+
+
+
+    function createExplosion(
+        x,
+        y
+    ){
+
+
+
+        for(
+            let i=0;
+            i<80;
+            i++
+        ){
+
+
+            const angle =
+                Math.random()
+                *
+                Math.PI
+                *
+                2;
+
+
+
+            const speed =
+                Math.random()*5+2;
+
+
+
+            particles.push({
+
+
+                x:x,
+
+
+                y:y,
+
+
+                dx:
+                Math.cos(angle)
+                *
+                speed,
+
+
+                dy:
+                Math.sin(angle)
+                *
+                speed,
+
+
+
+                life:100
+
+
+
+            });
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+    function randomFirework(){
+
+
+        createExplosion(
+
+
+            Math.random()
+            *
+            canvas.width,
+
+
+            Math.random()
+            *
+            canvas.height
+            *
+            0.7
+
+
+        );
+
+
+
+    }
+
+
+
+
+
+    setInterval(
+        randomFirework,
+        800
+    );
+
+
+
+
+
+
+
+    function animate(){
+
+
+
+        ctx.clearRect(
+
+            0,
+
+            0,
+
+            canvas.width,
+
+            canvas.height
+
+        );
+
+
+
+        particles.forEach(
+            (p,index)=>{
+
+
+                ctx.beginPath();
+
+
+
+                ctx.arc(
+
+                    p.x,
+
+                    p.y,
+
+                    3,
+
+                    0,
+
+                    Math.PI*2
+
+                );
+
+
+
+                ctx.fillStyle =
+                "white";
+
+
+
+                ctx.fill();
+
+
+
+
+                p.x += p.dx;
+
+
+                p.y += p.dy;
+
+
+
+                p.dy +=0.05;
+
+
+
+                p.life--;
+
+
+
+                if(
+                    p.life<=0
+                ){
+
+
+                    particles.splice(
+                        index,
+                        1
+                    );
+
+
+                }
+
+
+
+            }
+        );
+
+
+
+        requestAnimationFrame(
+            animate
+        );
+
+
+
+    }
+
+
+
+    animate();
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   最终页面进入检测
+===================================== */
+
+
+const finalPage =
+document.getElementById(
+    "finalPage"
+);
+
+
+
+if(finalPage){
+
+
+
+    const observer =
+    new IntersectionObserver(
+
+        entries=>{
+
+
+            entries.forEach(
+                entry=>{
+
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+
+
+                        finalPage
+                        .classList.add(
+                            "show"
+                        );
+
+
+
+                    }
+
+
+
+                }
+            );
+
+
+        },
+
+        {
+            threshold:0.5
+        }
+
+    );
+
+
+
+    observer.observe(
+        finalPage
+    );
+
+
+
+}
