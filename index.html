@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday 李媛媛 🎉</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="starCanvas"></canvas>
+    <div id="petals"></div>
+
+    <section id="welcome" class="page">
+        <div class="glass">
+            <h3 class="smallTitle">To</h3>
+            <h1 class="bigTitle">李媛媛</h1>
+            <p class="birthday">2007-2026</p>
+            <div class="cake">🎂</div>
+            <p class="tip">一份小礼物正在等待你...</p>
+            <button id="startBtn">点击开启</button>
+        </div>
+    </section>
+
+    <section id="letter" class="page" style="display: none;">
+        <div class="glass letterBox">
+            <h2>💌 Happy Birthday</h2>
+            <div id="typingText"></div>
+        </div>
+    </section>
+
+    <section id="timeline" class="page" style="display: none;">
+        <h2 class="sectionTitle">🌸 时 间 的 礼 物</h2>
+        <div class="timeline">
+            <div class="timeItem">
+                <div class="year">2007</div>
+                <div class="content">
+                    <h3>Hello World</h3>
+                    <p>一个可爱的女孩，来到了这个世界。</p>
+                </div>
+            </div>
+            <div class="timeItem">
+                <div class="year">2013</div>
+                <div class="content">
+                    <h3>小小梦想</h3>
+                    <p>开始认识这个世界，每一天都有新的故事。</p>
+                </div>
+            </div>
+            <div class="timeItem">
+                <div class="year">2019</div>
+                <div class="content">
+                    <h3>青春</h3>
+                    <p>少年时期，带着笑容慢慢长大。</p>
+                </div>
+            </div>
+            <div class="timeItem">
+                <div class="year">2022</div>
+                <div class="content">
+                    <h3>高中</h3>
+                    <p>每一次努力，都在悄悄闪闪发光。</p>
+                </div>
+            </div>
+            <div class="timeItem">
+                <div class="year">2025</div>
+                <div class="content">
+                    <h3>成年啦</h3>
+                    <p>愿成长带来的，永远是温柔和勇敢。</p>
+                </div>
+            </div>
+            <div class="timeItem">
+                <div class="year">2026</div>
+                <div class="content">
+                    <h3>19岁生日</h3>
+                    <p>Happy Birthday 🎉</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="wish" class="page" style="display: none;">
+        <div class="glass">
+            <h2>⭐ 一段祝福</h2>
+            <p class="wishText">
+                希望未来的每一天<br><br>
+                都有人认真爱你<br><br>
+                愿你的善良<br>永远都有回应<br><br>
+                愿你的努力<br>都能开出花来<br><br>
+                愿十九岁的你<br>比昨天更加快乐
+            </p>
+        </div>
+    </section>
+
+    <section id="giftPage" class="page" style="display: none;">
+        <div class="glass">
+            <h2>🎁</h2>
+            <p>最后一份礼物</p>
+            <div id="gift">🎁</div>
+            <button id="openGift">打开礼物</button>
+        </div>
+    </section>
+
+    <section id="finalPage" class="page" style="display: none;">
+        <div class="glass finalBox">
+            <div id="fireworkArea"></div>
+            <h1 class="finalTitle">生日快乐</h1>
+            <h2>李媛媛</h2>
+            <p class="finalText">
+                愿今后的你<br>眼里有光<br>心中有梦<br><br>
+                愿未来所有日子<br>万事顺意<br>平安喜乐<br><br>
+                🎉
+            </p>
+            <div class="stars">✨ ✨ ✨</div>
+        </div>
+    </section>
+
+    <div id="musicControl">
+        <button id="musicBtn">🎵</button>
+    </div>
+    <audio id="birthdayMusic" loop>
+        <source src="music/birthday.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="secret">
+        <div class="heart"> 🎉</div>
+        <p>你值得所有美好</p>
+    </div>
+
+    <button id="topBtn">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
