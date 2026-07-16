@@ -14,6 +14,23 @@ if(startBtn){
             return; 
         }
 
+const music = document.getElementById("birthdayMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+music.play().then(() => {
+
+    playing = true;
+
+    if(musicBtn){
+        musicBtn.innerHTML = "⏸️";
+    }
+
+}).catch(error => {
+
+    console.log("音乐播放失败:", error);
+
+});
+
         const letterPage = document.getElementById("letter");
         if(letterPage) letterPage.style.display = "flex"; 
 
@@ -142,9 +159,35 @@ document.addEventListener("click", function(e){
     setTimeout(() => { heart.remove(); }, 1500);
 });
 
-const music = document.getElementById("birthdayMusic");
-const musicBtn = document.getElementById("musicBtn");
+
 let playing = false;
+
+
+if(musicBtn){
+
+    musicBtn.addEventListener("click",()=>{
+
+        if(!playing){
+
+            music.play();
+
+            playing=true;
+
+            musicBtn.innerHTML="⏸️";
+
+        }else{
+
+            music.pause();
+
+            playing=false;
+
+            musicBtn.innerHTML="🎵";
+
+        }
+
+    });
+
+}
 
 if(musicBtn){
     musicBtn.addEventListener("click", () => {
